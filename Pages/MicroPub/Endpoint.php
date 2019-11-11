@@ -608,7 +608,14 @@ namespace IdnoPlugins\IndiePub\Pages\MicroPub {
          */
         private function uploadFromUrl($type, $url)
         {
-            $_url = $url;
+            if (!is_array($url))
+            {
+                $_url[0] = $url;
+            }
+            else
+            {
+                $_url = $url;
+            }
             foreach($_url as $url)
             {
                 $pathinfo = pathinfo(parse_url($url, PHP_URL_PATH));
